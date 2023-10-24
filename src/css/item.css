@@ -1,0 +1,23 @@
+.item-box {
+    position: relative;
+    padding: 15px 15px 0;
+    color: var(--elements-font-color);
+    background-color: var(--input-bg-color);
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    cursor: pointer;
+    overflow: hidden;
+    word-break: break-word;
+}
+
+/* Костыльное решение для overflow */
+.item-box:after{
+    content: ' ';
+    position: absolute;
+    display: block;
+    height: 15px;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    background-color: var(--input-bg-color);
+}

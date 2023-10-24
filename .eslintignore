@@ -1,0 +1,8 @@
+dist
+coverage
+doc
+e2e
+__mocks__
+__tests__
+webpack.*.js
+jest.*.js
