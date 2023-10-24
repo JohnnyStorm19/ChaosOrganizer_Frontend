@@ -1,4 +1,4 @@
-import WidgetApi from "./WidgetAPI";
+import WidgetApi from "./WidgetApi";
 import WidgetApp from "./WidgetApp";
 import { URL, emojiUrl } from './globals.js';
 
