@@ -38,3 +38,4 @@
 </details>
 
 
+[![Chaos-Organizer-widget-app](https://github.com/JohnnyStorm19/ahj-Diploma_Frontend/actions/workflows/web.yml/badge.svg)](https://github.com/JohnnyStorm19/ahj-Diploma_Frontend/actions/workflows/web.yml)
