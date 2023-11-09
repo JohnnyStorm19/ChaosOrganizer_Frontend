@@ -439,7 +439,6 @@ export default class WidgetApp {
 
     // создает подсказку после добавления элемента
     createTooltip(text) {
-        console.log('in tooltip creation');
         const tooltipEl = document.createElement('div');
         const tooltipTextEl = document.createElement('p');
         tooltipEl.classList.add('tooltip');
