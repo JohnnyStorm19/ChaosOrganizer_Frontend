@@ -1,4 +1,4 @@
-name: Netology AHJ
+name: Chaos-Organizer-widget-app
 
 on: [push, pull_request]
 
