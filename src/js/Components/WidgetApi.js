@@ -41,13 +41,36 @@ export default class WidgetApi {
         })
       }
 
+      if (options.type === 'audio') {
+        let formSent = new FormData()
+        formSent.append('content', options.content);
+
+        console.log(formSent);
+
+        request = fetch(this.apiUrl + '/item/add/audio', {
+          method: 'POST',
+          keepalive: true,
+          body: formSent
+        })
+      }
+
+      if (options.type === 'video') {
+        let formSent = new FormData()
+        formSent.append('content', options.content);
+
+        request = fetch(this.apiUrl + '/item/add/video', {
+          method: 'POST',
+          keepalive: true,
+          body: formSent
+        })
+      }
+
       const result = await request;
       if (!result.ok) {
         console.error('Error');
         return;
       }
       const json = await result.json();
-      console.log(json, 'in widgetAPI')
       return json;
     }
 
@@ -71,6 +94,73 @@ export default class WidgetApi {
 
     async getTextFile(id) {
       const result = await fetch(this.apiUrl + `/item/gettext?id=${id}`);
+      if (!result.ok) {
+        console.error('Error');
+        return;
+      }
+      return result.json();
+    }
+
+    async getAllFiles() {
+      const result = await fetch(this.apiUrl + "/item/getAllItems");
+      if (!result.ok) {
+        console.error('Error');
+        return;
+      }
+      return result.json();
+    } 
+
+    async updateFile(options) {
+      const result = await fetch(this.apiUrl + `/item/update/${options.id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify( { content: options.content } )
+      })
+      if (!result.ok) {
+        console.error('Error');
+        return;
+      }
+      return result.json();
+    }
+
+    async deleteFile(options) {
+      const result = await fetch(this.apiUrl + `/item/delete/${options.id}`, {
+        method: 'DELETE'
+      })
+
+      if (!result.ok) {
+        console.error('Error');
+        return;
+      }
+      return result.json();
+    }
+
+    async downloadFile(options) {
+      const result = await fetch(this.apiUrl + `/item/download/${options.id}`);
+
+      if (!result.ok) {
+        console.error('Error');
+        return;
+      }
+
+      return result;
+    }
+
+    async filterFiles(options) {
+      const result = await fetch(this.apiUrl + `/item/filter/${options.type}`);
+
+      if (!result.ok) {
+        console.error('Error');
+        return;
+      }
+      return result.json();
+    }
+
+    async searchFiles(options) {
+      const result = await fetch(this.apiUrl + `/item/search?content=${options.content}`);
+
       if (!result.ok) {
         console.error('Error');
         return;
